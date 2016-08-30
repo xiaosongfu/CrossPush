@@ -28,6 +28,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //修改 ActionBar 标题为 Register
+        getSupportActionBar().setTitle(getResources().getString(R.string.register));
+
         //初始化视图和点击事件
         initViewsAndEvents();
     }

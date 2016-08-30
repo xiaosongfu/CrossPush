@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#FFABE5</color>
+    <color name="colorPrimaryDark">#DA9FFF</color>
     <color name="colorAccent">#FF4081</color>
+
+
+
+    <!--登陆注册界面相关-->
+    <color name="woTui">#FF4081</color>
+
+
+
+    <!-- Button 的 style xml 中使用到的颜色 -->
+    <color name="button_style_stroke_color">#FF4081</color>
 </resources>

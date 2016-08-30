@@ -3,6 +3,7 @@ package com.fuxiaosong.wotui.activity.entry;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //修改 ActionBar 标题为 Login
+        getSupportActionBar().setTitle(getResources().getString(R.string.login));
 
         //初始化视图和点击事件
         initViewsAndEvents();
@@ -80,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     startActivity(intent);
                     LoginActivity.this.finish();
                 }else{
-                    Toast.makeText(LoginActivity.this , "登录失败" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this , "登录失败,用户名或密码错误" , Toast.LENGTH_SHORT).show();
                 }
             }
         });

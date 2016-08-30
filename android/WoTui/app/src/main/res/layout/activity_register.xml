@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="40dp">
 
+    <!--Logo-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/logo_height"
+        android:gravity="center"
+        android:textSize="@dimen/logo_text_size"
+        android:textColor="@color/woTui"
+        android:text="@string/wo_tui"/>
     <EditText
         android:id="@+id/user_name_et"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/edit_text_height"
         android:hint="@string/user_name"/>
     <EditText
         android:id="@+id/password_et"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/edit_text_height"
         android:inputType="textPassword"
         android:hint="@string/password"/>
 
     <Button
         android:id="@+id/register_btn"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/button_style"
+        android:layout_marginTop="@dimen/button_margin_top"
         android:text="@string/register"/>
 </LinearLayout>

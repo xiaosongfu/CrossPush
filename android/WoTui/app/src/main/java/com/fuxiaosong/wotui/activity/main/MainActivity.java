@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.fuxiaosong.wotui.R;
 import com.fuxiaosong.wotui.activity.entry.LoginActivity;
+import com.fuxiaosong.wotui.activity.setting.AboutActivity;
 import com.fuxiaosong.wotui.model.User;
 
 import java.util.List;
@@ -195,6 +196,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(this , LoginActivity.class);
             startActivity(intent);
             this.finish();
+        }else if(item.getItemId() == R.id.about_item){
+            //转到 About Activity
+            Intent intent = new Intent(this , AboutActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

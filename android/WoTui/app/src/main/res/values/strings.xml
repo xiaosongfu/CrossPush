@@ -1,10 +1,16 @@
 <resources>
     <string name="app_name">WoTui</string>
 
-    <string name="user_name">用户名</string>
-    <string name="password">密码</string>
-    <string name="login">登录</string>
-    <string name="register">注册</string>
+
+    <string name="wo_tui">WOTUI</string>
+
+
+    <string name="user_name">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
+    <string name="input_tip">type text for pushing</string>
 
     <string name="push">Push</string>
     <string name="clear">Clear</string>
@@ -12,5 +18,6 @@
     <string name="copy">Copy</string>
 
 
+    <string name="about">About</string>
     <string name="quit">quit</string>
 </resources>
