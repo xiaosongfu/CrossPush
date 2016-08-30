@@ -7,5 +7,9 @@ The backend is powered by Bmob.
 ## Test
 There is a test account: 
 >
-user name:test
+user name:test  
 password:test
+
+
+--- 
+[中文版](README_ZH_CN.md)
