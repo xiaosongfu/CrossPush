@@ -11,5 +11,7 @@ user name:test
 password:test
 
 
+![xx](Screenshot/Screenshot_v1.0.0_main.png)
+
 --- 
 [中文版](README_ZH_CN.md)
