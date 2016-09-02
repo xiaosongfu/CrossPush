@@ -10,6 +10,7 @@
     <string name="login">Login</string>
     <string name="register">Register</string>
 
+
     <string name="input_tip">type text for pushing</string>
 
     <string name="push">Push</string>
@@ -17,6 +18,8 @@
     <string name="pull">Pull</string>
     <string name="copy">Copy</string>
 
+    <string name="tab_main">WoTui</string>
+    <string name="tab_setting">About</string>
 
     <string name="about">About</string>
     <string name="quit">quit</string>

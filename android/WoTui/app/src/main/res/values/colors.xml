@@ -13,4 +13,7 @@
 
     <!-- Button 的 style xml 中使用到的颜色 -->
     <color name="button_style_stroke_color">#FF4081</color>
+
+    <color name="tabChooseColor">#FF4081</color>
+
 </resources>

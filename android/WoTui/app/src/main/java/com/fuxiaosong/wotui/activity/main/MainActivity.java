@@ -7,19 +7,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.fuxiaosong.wotui.R;
 import com.fuxiaosong.wotui.activity.entry.LoginActivity;
-import com.fuxiaosong.wotui.activity.setting.AboutActivity;
+import com.fuxiaosong.wotui.activity.main.adapter.MainViewpagerAdapter;
 import com.fuxiaosong.wotui.model.User;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
@@ -31,6 +35,12 @@ import cn.bmob.v3.listener.UpdateListener;
  * Created by fuxiaosong on 16/8/28.
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    private ViewPager mainViewPager;
+    private View mainView , settingView;
+    ArrayList<View> viewList = null;
+
+    private TextView tabMainTV , tabSettingTV;
+
     private EditText contentET;
     private Button pushBtn,clearBtn,pullBtn,copyBtn;
 
@@ -70,16 +80,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      *
      */
     public void initViewsAndEvents(){
-        contentET = (EditText) findViewById(R.id.content_et);
-        pushBtn = (Button) findViewById(R.id.push_btn);
-        clearBtn = (Button) findViewById(R.id.clear_btn);
-        pullBtn = (Button) findViewById(R.id.pull_btn);
-        copyBtn = (Button) findViewById(R.id.copy_btn);
+        mainViewPager = (ViewPager) findViewById(R.id.main_viewpager);
+        mainView = getLayoutInflater().inflate(R.layout.viewpager_main , null);
+        settingView = getLayoutInflater().inflate(R.layout.viewpager_setting , null);
+
+
+        tabMainTV = (TextView) findViewById(R.id.tab_main_tv);
+        tabSettingTV = (TextView) findViewById(R.id.tab_setting_tv);
+        tabMainTV.setTextColor(getResources().getColor(R.color.colorAccent));
+
+        tabMainTV.setOnClickListener(this);
+        tabSettingTV.setOnClickListener(this);
+
+        contentET = (EditText) mainView.findViewById(R.id.content_et);
+        pushBtn = (Button) mainView.findViewById(R.id.push_btn);
+        clearBtn = (Button) mainView.findViewById(R.id.clear_btn);
+        pullBtn = (Button) mainView.findViewById(R.id.pull_btn);
+        copyBtn = (Button) mainView.findViewById(R.id.copy_btn);
 
         pushBtn.setOnClickListener(this);
         clearBtn.setOnClickListener(this);
         pullBtn.setOnClickListener(this);
         copyBtn.setOnClickListener(this);
+
+        viewList = new ArrayList<>(2);
+        viewList.add(mainView);
+        viewList.add(settingView);
+        mainViewPager.setAdapter(new MainViewpagerAdapter(viewList));
+        mainViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                whichChoose(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
 
     /**
@@ -158,6 +202,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
+            case R.id.tab_main_tv:
+                mainViewPager.setCurrentItem(0);
+                whichChoose(0);
+                break;
+            case R.id.tab_setting_tv:
+                mainViewPager.setCurrentItem(1);
+                whichChoose(1);
+                break;
+
+
             //Push
             case R.id.push_btn:
                 push();
@@ -179,6 +233,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
+    public void  whichChoose(int position){
+        if(position == 0){
+            tabMainTV.setTextColor(getResources().getColor(R.color.tabChooseColor));
+            tabSettingTV.setTextColor(getResources().getColor(android.R.color.black));
+        }else{
+            tabSettingTV.setTextColor(getResources().getColor(R.color.tabChooseColor));
+            tabMainTV.setTextColor(getResources().getColor(android.R.color.black));
+        }
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //填充菜单
@@ -196,10 +262,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(this , LoginActivity.class);
             startActivity(intent);
             this.finish();
-        }else if(item.getItemId() == R.id.about_item){
-            //转到 About Activity
-            Intent intent = new Intent(this , AboutActivity.class);
-            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
